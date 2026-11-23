@@ -1,104 +1,64 @@
-import { useState } from "react";
-import SEO from "../components/SEO";
+import { Link } from "react-router-dom";
 
-function Contact() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-
-  const [success, setSuccess] = useState("");
-
+function Login() {
   function handleSubmit(e) {
     e.preventDefault();
-
-    setSuccess("Your message has been submitted successfully.");
-
-    setForm({
-      name: "",
-      email: "",
-      message: ""
-    });
+    alert("Login form submitted.");
   }
 
   return (
-    <>
-      <SEO
-        title="Contact Us"
-        description="Get in touch with Soko Yetu Kenya for customer support, questions and enquiries."
-      />
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-6 py-12">
+      <div className="w-full max-w-md bg-white border border-gray-200 rounded-lg p-8">
+        <h1 className="text-3xl font-bold text-gray-900 text-center">
+          Welcome Back
+        </h1>
 
-      <section className="max-w-4xl mx-auto px-6 py-16">
-        <h1 className="text-3xl font-bold mb-3">Contact Us</h1>
-
-        <p className="text-gray-500 mb-8">
-          Have a question? Get in touch with us.
+        <p className="text-gray-500 text-center mt-2">
+          Sign in to your Mtaa Market account
         </p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-5 border rounded-xl p-8"
-        >
+        <form onSubmit={handleSubmit} className="mt-8 space-y-5">
           <div>
-            <label className="block font-medium mb-2">Full Name</label>
-
-            <input
-              type="text"
-              value={form.name}
-              onChange={(e) =>
-                setForm({ ...form, name: e.target.value })
-              }
-              className="w-full border rounded-md p-3"
-              placeholder="Your name"
-              required
-              minLength={2}
-            />
-          </div>
-
-          <div>
-            <label className="block font-medium mb-2">Email</label>
-
+            <label className="block text-sm font-medium mb-2">
+              Email Address
+            </label>
             <input
               type="email"
-              value={form.email}
-              onChange={(e) =>
-                setForm({ ...form, email: e.target.value })
-              }
-              className="w-full border rounded-md p-3"
-              placeholder="Your email"
               required
+              placeholder="Enter your email"
+              className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-gray-600"
             />
           </div>
 
           <div>
-            <label className="block font-medium mb-2">Message</label>
-
-            <textarea
-              value={form.message}
-              onChange={(e) =>
-                setForm({ ...form, message: e.target.value })
-              }
-              className="w-full border rounded-md p-3"
-              rows="5"
-              placeholder="Write your message"
+            <label className="block text-sm font-medium mb-2">
+              Password
+            </label>
+            <input
+              type="password"
               required
-              minLength={10}
+              placeholder="Enter your password"
+              className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-gray-600"
             />
           </div>
 
           <button
             type="submit"
-            className="bg-black text-white px-8 py-3 rounded-md"
+            className="w-full bg-gray-900 text-white py-3 rounded-md hover:bg-gray-700 transition"
           >
-            Send Message
+            Login
           </button>
-
-          {success && <p className="text-green-600">{success}</p>}
         </form>
-      </section>
-    </>
+
+        <p className="text-center text-gray-600 mt-6">
+          Don't have an account?{" "}
+          <Link to="/login" className="font-semibold underline">
+            Sign in
+          </Link>
+        </p>
+      </div>
+    </div>
   );
 }
 
-export default Contact;
+export default Login;

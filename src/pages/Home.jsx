@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ProductCard from "../components/ProductCard";
-import products from "../data/products";
-import SEO from "../components/SEO";
+import ProductCard from "../components/ProductCard.jsx";
+import products from "../data/products.jsx";
+import SEO from "../components/SEO.jsx";
 
 function Home({ addToCart }) {
   const [search, setSearch] = useState("");
